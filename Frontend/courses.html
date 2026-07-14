@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - EduFlow LMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> EduFlow
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="enrollments.html" class="auth-only" style="display:none;">My Enrollments</a></li>
+                <li><a href="assignments.html" class="auth-only" style="display:none;">Assignments</a></li>
+                <li><a href="dashboard.html" class="auth-only" style="display:none;">Dashboard</a></li>
+                <li><a href="admin.html">Admin Panel</a></li>
+            </ul>
+            <div class="nav-auth" id="nav-auth-section">
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="section-title">Explore Courses</h2>
+
+        <!-- Search & Filter Controls (Bonus Feature) -->
+        <div class="filters-bar">
+            <div class="search-wrapper">
+                <input type="text" id="course-search" class="form-control" placeholder="Search courses by name or instructor...">
+            </div>
+            <div class="filter-group">
+                <select id="filter-level" class="filter-select">
+                    <option value="">All Levels</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+                <select id="filter-category" class="filter-select">
+                    <option value="">All Categories</option>
+                    <!-- Dynamically populated categories -->
+                </select>
+            </div>
+        </div>
+
+        <div class="grid" id="courses-grid">
+            <!-- Dynamically populated by script.js -->
+            <div class="card" style="text-align: center; padding: 3rem;">
+                <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <p>Loading course catalogue...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: rgba(15, 23, 42, 0.9); text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem;">
+        <p>&copy; 2026 EduFlow Learning Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Enrollment Confirmation Modal -->
+    <div class="modal" id="enrollment-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('enrollment-modal')">&times;</button>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-cart-shopping" style="color: var(--secondary);"></i> Confirm Enrollment</h3>
+            <p id="enrollment-confirm-msg" style="color: var(--text-muted); margin-bottom: 1.5rem;"></p>
+            <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                <button class="btn btn-secondary" onclick="closeModal('enrollment-modal')">Cancel</button>
+                <button class="btn btn-primary" id="confirm-enroll-btn">Enroll & Pay Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - EduFlow LMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> EduFlow
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="enrollments.html" class="auth-only" style="display:none;">My Enrollments</a></li>
+                <li><a href="assignments.html" class="auth-only" style="display:none;">Assignments</a></li>
+                <li><a href="dashboard.html" class="auth-only" style="display:none;">Dashboard</a></li>
+                <li><a href="admin.html" class="active">Admin Panel</a></li>
+            </ul>
+            <div class="nav-auth" id="nav-auth-section">
+                <!-- Session Actions -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem;">Administration Dashboard</h2>
+                <p style="color: var(--text-muted);">Manage students, instructors, courses, enrollments, and evaluate assignments</p>
+            </div>
+        </div>
+
+        <!-- Admin Horizontal Navigation Tabs -->
+        <div class="admin-nav">
+            <div class="admin-tab active" onclick="switchAdminTab('students-tab', this)">
+                <i class="fa-solid fa-user-graduate"></i> Students
+            </div>
+            <div class="admin-tab" onclick="switchAdminTab('instructors-tab', this)">
+                <i class="fa-solid fa-chalkboard-user"></i> Instructors
+            </div>
+            <div class="admin-tab" onclick="switchAdminTab('courses-tab', this)">
+                <i class="fa-solid fa-book"></i> Courses
+            </div>
+            <div class="admin-tab" onclick="switchAdminTab('enrollments-tab', this)">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Enrollments
+            </div>
+            <div class="admin-tab" onclick="switchAdminTab('assignments-tab', this)">
+                <i class="fa-solid fa-file-signature"></i> Assignments
+            </div>
+        </div>
+
+        <!-- STUDENTS SECTION -->
+        <section id="students-tab" class="admin-section active">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.25rem;">Manage Students</h3>
+                <button class="btn btn-primary btn-sm" onclick="openAddModal('student')"><i class="fa-solid fa-plus"></i> Add Student</button>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Qualification</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-students-table-body">
+                        <!-- Loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- INSTRUCTORS SECTION -->
+        <section id="instructors-tab" class="admin-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.25rem;">Manage Instructors</h3>
+                <button class="btn btn-primary btn-sm" onclick="openAddModal('instructor')"><i class="fa-solid fa-plus"></i> Add Instructor</button>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Instructor ID</th>
+                            <th>Name</th>
+                            <th>Specialization</th>
+                            <th>Experience (Yrs)</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-instructors-table-body">
+                        <!-- Loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- COURSES SECTION -->
+        <section id="courses-tab" class="admin-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.25rem;">Manage Courses</h3>
+                <button class="btn btn-primary btn-sm" onclick="openAddModal('course')"><i class="fa-solid fa-plus"></i> Add Course</button>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Instructor</th>
+                            <th>Category</th>
+                            <th>Duration</th>
+                            <th>Price (INR)</th>
+                            <th>Level</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-courses-table-body">
+                        <!-- Loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ENROLLMENTS SECTION -->
+        <section id="enrollments-tab" class="admin-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.25rem;">Manage Enrollments</h3>
+                <button class="btn btn-primary btn-sm" onclick="openAddModal('enrollment')"><i class="fa-solid fa-plus"></i> Add Enrollment</button>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Enrollment ID</th>
+                            <th>Student Name</th>
+                            <th>Course Name</th>
+                            <th>Enrollment Date</th>
+                            <th>Payment Status</th>
+                            <th>Course Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-enrollments-table-body">
+                        <!-- Loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ASSIGNMENTS SECTION -->
+        <section id="assignments-tab" class="admin-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.25rem;">Manage Assignments</h3>
+                <button class="btn btn-primary btn-sm" onclick="openAddModal('assignment')"><i class="fa-solid fa-plus"></i> Add Assignment</button>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Assignment ID</th>
+                            <th>Course</th>
+                            <th>Student</th>
+                            <th>Title</th>
+                            <th>Submission Date</th>
+                            <th>Marks</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-assignments-table-body">
+                        <!-- Loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- ADMIN MODAL POPUP FOR CRUD FORMS -->
+    <div class="modal" id="admin-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('admin-modal')">&times;</button>
+            <h3 id="admin-modal-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Add Entity</h3>
+            <form id="admin-modal-form">
+                <!-- Dynamically injected fields -->
+                <div id="admin-modal-fields-container"></div>
+                
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('admin-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="admin-modal-submit-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Authorization Check Modal -->
+    <div class="modal" id="admin-auth-modal">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <i class="fa-solid fa-shield-halved" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Admin Access Required</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Enter Admin password to proceed. (Use default: admin123)</p>
+            <form id="admin-auth-form">
+                <div class="form-group">
+                    <input type="password" id="admin-auth-pass" class="form-control" placeholder="Admin Password" required style="text-align: center;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Unlock Panel</button>
+            </form>
+            <a href="index.html" style="display: block; color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; text-decoration: none;"><i class="fa-solid fa-arrow-left"></i> Return Home</a>
+        </div>
+    </div>
+
+    <footer style="background: rgba(15, 23, 42, 0.9); text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem;">
+        <p>&copy; 2026 EduFlow Learning Management System. All rights reserved.</p>
+    </footer>
+
+    <div class="toast-container" id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

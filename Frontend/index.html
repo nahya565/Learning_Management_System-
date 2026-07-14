@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFlow LMS - Modern Learning Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jsPDF for Certificate PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> EduFlow
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="enrollments.html" class="auth-only" style="display:none;">My Enrollments</a></li>
+                <li><a href="assignments.html" class="auth-only" style="display:none;">Assignments</a></li>
+                <li><a href="dashboard.html" class="auth-only" style="display:none;">Dashboard</a></li>
+                <li><a href="admin.html">Admin Panel</a></li>
+            </ul>
+            <div class="nav-auth" id="nav-auth-section">
+                <!-- Will be updated dynamically by script.js -->
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Unlock Your Potential with EduFlow</h1>
+            <p>Access high-quality courses designed by industry professionals. Learn at your own pace, submit assignments, and get certified globally.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="courses.html" class="btn btn-primary">Browse Courses <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="register.html" class="btn btn-secondary">Get Started <i class="fa-solid fa-user-plus"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="featured-courses">
+            <h2 class="section-title">Featured Courses</h2>
+            <div class="grid" id="featured-courses-container">
+                <!-- Dynamically loaded via script.js -->
+                <div class="card" style="text-align: center; padding: 3rem;">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                    <p>Loading course catalogue...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-academy" style="margin-top: 5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 3rem; display: flex; flex-direction: column; gap: 1.5rem;">
+            <h2 class="section-title" style="margin-bottom: 1rem;">About EduFlow Academy</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                EduFlow is a state-of-the-art educational platform engineered to bridge the gap between ambitious learners and master instructors. We believe in providing an immersive, barrier-free learning environment where anyone, anywhere can learn Python programming, Full Stack web development, UI/UX design, and database administration.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 1rem;">
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <i class="fa-solid fa-globe" style="font-size: 2rem; color: #d946ef;"></i>
+                    <h4 style="font-weight: 700; margin-top: 0.5rem;">100% Online</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Learn anywhere in the world on any device.</p>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <i class="fa-solid fa-certificate" style="font-size: 2rem; color: #86198f;"></i>
+                    <h4 style="font-weight: 700; margin-top: 0.5rem;">Verify Credentials</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Receive standard downloadable PDF certificates upon completion.</p>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <i class="fa-solid fa-user-tie" style="font-size: 2rem; color: #701a75;"></i>
+                    <h4 style="font-weight: 700; margin-top: 0.5rem;">Expert Trainers</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Study under industry experts with years of active coding experience.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: rgba(15, 23, 42, 0.9); text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem;">
+        <p>&copy; 2026 EduFlow Learning Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

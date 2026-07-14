@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - EduFlow LMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> EduFlow
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="admin.html">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="display: flex; align-items: center; justify-content: center; min-height: 90vh; padding: 2rem 0;">
+        <div class="auth-container" style="max-width: 500px;">
+            <h2 style="font-size: 1.75rem; text-align: center; margin-bottom: 0.5rem;">Student Registration</h2>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">Join our academy and start learning today</p>
+            
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="student_id"><i class="fa-solid fa-id-card"></i> Student ID (Optional)</label>
+                    <input type="number" id="student_id" class="form-control" placeholder="Leave blank to auto-generate (e.g. 101)">
+                </div>
+                <div class="form-group">
+                    <label for="full_name"><i class="fa-regular fa-user"></i> Full Name</label>
+                    <input type="text" id="full_name" class="form-control" placeholder="Rahul Sharma" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fa-regular fa-envelope"></i> Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="rahul@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone"><i class="fa-solid fa-phone"></i> Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="9876543210" required>
+                </div>
+                <div class="form-group">
+                    <label for="qualification"><i class="fa-solid fa-user-graduate"></i> Qualification</label>
+                    <input type="text" id="qualification" class="form-control" placeholder="B.Tech / MCA / B.Sc" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fa-solid fa-lock"></i> Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Create Account <i class="fa-solid fa-user-plus"></i></button>
+            </form>
+            
+            <div class="form-footer">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: rgba(15, 23, 42, 0.9); text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem;">
+        <p>&copy; 2026 EduFlow Learning Management System. All rights reserved.</p>
+    </footer>
+
+    <div class="toast-container" id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

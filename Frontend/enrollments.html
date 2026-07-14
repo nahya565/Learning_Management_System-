@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Enrollments - EduFlow LMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jsPDF for Certificate PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> EduFlow
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="enrollments.html" class="active auth-only">My Enrollments</a></li>
+                <li><a href="assignments.html" class="auth-only">Assignments</a></li>
+                <li><a href="dashboard.html" class="auth-only">Dashboard</a></li>
+                <li><a href="admin.html">Admin Panel</a></li>
+            </ul>
+            <div class="nav-auth" id="nav-auth-section">
+                <!-- Session Actions -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="section-title">My Enrolled Courses</h2>
+        
+        <div id="enrollments-list-container">
+            <!-- Loaded dynamically via script.js -->
+            <div class="card" style="text-align: center; padding: 3rem;">
+                <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <p>Retrieving your enrollments...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Hidden Certificate Container for PDF generation -->
+    <div id="certificate-template">
+        <div class="cert-border">
+            <h1 style="font-size: 2.5rem; color: #701a75; margin-bottom: 5px;">EduFlow Academy</h1>
+            <p style="font-style: italic; font-size: 1.1rem; color: #d946ef;">Certificate of Course Completion</p>
+            <div style="margin: 25px 0;">
+                <p style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; color: #3b0764;">This is proudly presented to</p>
+                <h2 id="cert-student-name" style="font-size: 2.2rem; color: #4a044e; margin: 10px 0; border-bottom: 2px solid #f5d0fe; padding-bottom: 10px; display: inline-block; min-width: 300px;">Student Name</h2>
+            </div>
+            <p style="font-size: 1rem; color: #3b0764; max-width: 500px; line-height: 1.5;">
+                for successfully completing the coursework and requirements for the professional certification course
+            </p>
+            <h3 id="cert-course-name" style="font-size: 1.6rem; color: #d946ef; margin: 15px 0;">Course Name</h3>
+            <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 30px; border-top: 1px solid #f5d0fe; padding-top: 20px;">
+                <div style="text-align: left;">
+                    <p style="font-size: 0.8rem; color: #701a75; margin: 0;">DATE OF ISSUE</p>
+                    <strong id="cert-date" style="font-size: 0.95rem; color: #4a044e;">2026-07-14</strong>
+                </div>
+                <div style="text-align: right;">
+                    <p style="font-size: 0.8rem; color: #701a75; margin: 0;">INSTRUCTOR SIGNATURE</p>
+                    <strong style="font-family: 'Brush Script MT', cursive, sans-serif; font-size: 1.3rem; color: #d946ef; font-style: italic;" id="cert-instructor">Saran Velmurugan</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: rgba(15, 23, 42, 0.9); text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem;">
+        <p>&copy; 2026 EduFlow Learning Management System. All rights reserved.</p>
+    </footer>
+
+    <div class="toast-container" id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

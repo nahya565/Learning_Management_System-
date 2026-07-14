@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Assignments - EduFlow LMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> EduFlow
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="enrollments.html" class="auth-only">My Enrollments</a></li>
+                <li><a href="assignments.html" class="active auth-only">Assignments</a></li>
+                <li><a href="dashboard.html" class="auth-only">Dashboard</a></li>
+                <li><a href="admin.html">Admin Panel</a></li>
+            </ul>
+            <div class="nav-auth" id="nav-auth-section">
+                <!-- Session Actions -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="section-title">My Assignments</h2>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Assignment Title</th>
+                        <th>Date / Deadline</th>
+                        <th>Status</th>
+                        <th>Marks Obtained</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="assignments-table-body">
+                    <!-- Dynamically populated via script.js -->
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 2rem;">
+                            <i class="fa-solid fa-spinner fa-spin" style="color: var(--secondary); margin-right: 0.5rem;"></i> Loading assignments...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer style="background: rgba(15, 23, 42, 0.9); text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 5rem;">
+        <p>&copy; 2026 EduFlow Learning Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Submit Assignment Modal -->
+    <div class="modal" id="submit-assignment-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('submit-assignment-modal')">&times;</button>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-cloud-arrow-up" style="color: var(--secondary);"></i> Submit Assignment</h3>
+            <p id="submit-assignment-title" style="font-weight: 600; margin-bottom: 1rem;"></p>
+            <form id="submit-assignment-form">
+                <div class="form-group">
+                    <label for="submission-url"><i class="fa-solid fa-link"></i> Project Link (GitHub/Drive)</label>
+                    <input type="url" id="submission-url" class="form-control" placeholder="https://github.com/your-username/project-repo" required>
+                </div>
+                <div class="form-group">
+                    <label for="submission-comments"><i class="fa-regular fa-comment"></i> Comments / Notes</label>
+                    <textarea id="submission-comments" class="form-control" rows="3" placeholder="Explain your project implementation details..."></textarea>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('submit-assignment-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Now <i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>
